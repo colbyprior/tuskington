@@ -1,0 +1,22 @@
+version: '3'
+services:
+  database:
+    image: 'mongo'
+    container_name: 'tuskington-mongo'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: tuskingtonuser
+      MONGO_INITDB_ROOT_PASSWORD: tuskingtonpass
+    volumes:
+      - ./mongo-volume:/data/db
+
+  tuskington:
+    depends_on:
+      - database
+    container_name: 'tuskington'
+    build: .
+    volumes:
+      - ./src:/app
+    env_file:
+      - tuskington.env
+    ports:
+      - '5000:5000'

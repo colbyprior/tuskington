@@ -17,7 +17,6 @@ def cloner():
         if "repo" not in request.form.keys():
             return "Bad POST data"
         repo = request.form["repo"]
-        #rm = subprocess.run(["rm", "-r", "-f", "/tmp/*"], shell=True, capture_output=True, text=True)
         rm = subprocess.run(["rm", "-rf", "/tmp/*"], capture_output=True, text=True)
 
         r = Repo.init('', bare=True)

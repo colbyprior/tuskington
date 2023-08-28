@@ -5,3 +5,5 @@ gunicorn
 pymongo==3.9.0
 Jinja2
 gitpython==3.1.29
+pytest
+requests

@@ -1,0 +1,20 @@
+name: DAST
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      -
+        name: Run server
+        run: docker-compose up -d
+      -
+        name: Run Dastardly Action Step
+        uses: PortSwigger/dastardly-github-action@main
+        with:
+          target-url: 'http://localhost:5000'

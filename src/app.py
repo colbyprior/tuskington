@@ -18,13 +18,10 @@ gunicorn_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers = gunicorn_logger.handlers
 app.logger.setLevel(gunicorn_logger.level)
 
-
-@app.route("/health", methods=['GET'])
-def test():
-    return "OK"
-
-
+from routes import home
+from routes import health
 from routes import cloner
+from routes import selector
 
 
 # Start the server on port 5000

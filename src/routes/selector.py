@@ -6,7 +6,7 @@ from app import app
 
 #
 @app.route("/selector", methods=['GET', 'POST'])
-def cloner():
+def selector():
     if request.method == "GET":
         return """
 <form action="/cloner" method="post">

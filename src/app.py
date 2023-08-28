@@ -1,10 +1,10 @@
-from flask import Flask 
+from flask import Flask
 from werkzeug.middleware.proxy_fix import ProxyFix
 from flask_session import Session
 import logging
 
 app = Flask(__name__)
-debug=True
+debug = True
 if debug:
     app.config['DEBUG'] = True
 
@@ -18,11 +18,14 @@ gunicorn_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers = gunicorn_logger.handlers
 app.logger.setLevel(gunicorn_logger.level)
 
+
 @app.route("/health", methods=['GET'])
 def test():
     return "OK"
 
+
 from routes import cloner
+
 
 # Start the server on port 5000
 if __name__ == "__main__":

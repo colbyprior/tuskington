@@ -7,3 +7,4 @@ Jinja2
 gitpython==3.1.29
 pytest
 requests
+sqlite3

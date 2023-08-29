@@ -15,10 +15,10 @@ jobs:
         run: docker-compose up -d
       -
         name: Wait for server
-        run: sleep 60
+        run: sleep 10
       -
-        name: Check health
-        run: curl -v 'http://localhost:5000'
+        name: Get IP
+        run: ifconfig
       -
         name: Run Dastardly Action Step
         uses: PortSwigger/dastardly-github-action@main

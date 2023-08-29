@@ -18,9 +18,12 @@ jobs:
         run: sleep 10
       -
         name: Get IP
-        run: ifconfig
+        run: IP=$(ifconfig | grep "^br" -A1 | grep inet | sed 's/.*inet //' | sed 's/\s*netmask.*//')
+      -
+        name: test
+        run: echo "$IP"
       -
         name: Run Dastardly Action Step
         uses: PortSwigger/dastardly-github-action@main
         with:
-          target-url: 'http://localhost:5000'
+          target-url: "http://$IP:5000"

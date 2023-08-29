@@ -31,8 +31,6 @@ jobs:
         uses: PortSwigger/dastardly-github-action@main
         with:
           target-url: "http://${{steps.get_ip.outputs.IP}}:5000"
-      - name: test
-        run: ls -l /github/workspace/*
       - name: Publish Test Report
         if: always()                                    # Forces this step to always run
         uses: mikepenz/action-junit-report@v3

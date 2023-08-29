@@ -17,13 +17,16 @@ jobs:
         name: Wait for server
         run: sleep 10
       -
-        name: Get IP
-        run: IP=$(ifconfig | grep "^br" -A1 | grep inet | sed 's/.*inet //' | sed 's/\s*netmask.*//')
+        name: GetIP
+        run: |
+          IP=$(ifconfig | grep "^br" -A1 | grep inet | sed 's/.*inet //' | sed 's/\s*netmask.*//')
+          echo "$IP"
+          echo "IP=$IP" >> $GITHUB_OUTPUT
       -
         name: test
-        run: echo "$IP"
+        run: echo "[${{steps.GetIP.outputs.IP}}]"
       -
         name: Run Dastardly Action Step
         uses: PortSwigger/dastardly-github-action@main
         with:
-          target-url: "http://$IP:5000"
+          target-url: "http://[${{steps.GetIP.outputs.IP}}]:5000"

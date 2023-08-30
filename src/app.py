@@ -22,6 +22,7 @@ from routes import home
 from routes import health
 from routes import cloner
 from routes import selector
+from routes import echo
 
 
 # Start the server on port 5000

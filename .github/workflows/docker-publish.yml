@@ -3,6 +3,7 @@ name: DockerPublish
 on:
   push:
     branches: [ "foobar" ]
+  pull_request:
     
 
 jobs:

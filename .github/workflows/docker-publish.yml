@@ -2,7 +2,7 @@ name: DockerPublish
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "foobar" ]
 
 jobs:
   build:

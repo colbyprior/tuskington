@@ -3,6 +3,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 from flask_session import Session
 import logging
 
+
 app = Flask(__name__)
 debug = True
 if debug:
